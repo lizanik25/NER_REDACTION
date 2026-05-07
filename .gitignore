@@ -18,6 +18,9 @@ venv/
 
 # Models
 models/final_model/
+models/final_model/*.tar
+models/final_model/*.safetensors
+models/archive/
 
 # Outputs
 outputs/
