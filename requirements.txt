@@ -17,3 +17,6 @@ DAWG-Python==0.7.2
 PyYAML==6.0.2
 typer==0.25.1
 rich==15.0.0
+
+python-dotenv==1.2.2
+requests==2.32.3
