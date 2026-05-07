@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+.env
+
+.venv_test/
+
+# MacOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models
+models/final_model/
+
+# Outputs
+outputs/
+outputs_clean/
+outputs_batch/
+outputs_batch_rich/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/

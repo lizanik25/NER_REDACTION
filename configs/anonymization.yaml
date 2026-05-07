@@ -1,0 +1,6 @@
+methods:
+  PERSON: replace
+  EMAIL: mask
+  PHONE: mask
+  ADDRESS: replace
+  ID: mask
