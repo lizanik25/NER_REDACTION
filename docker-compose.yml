@@ -1,0 +1,11 @@
+services:
+  ner-redaction-api:
+    build: .
+    container_name: ner-redaction-api
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./models/final_model:/app/models/final_model
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONPATH=/app
