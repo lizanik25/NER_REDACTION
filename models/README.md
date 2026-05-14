@@ -4,10 +4,10 @@
 
 ```
 models/
-├── README.md       
-└── final_model/     - веса финальной гибридной модели
-    ├── slovnet_ner.bin                              - дообученные веса Slovnet NER
-    └── navec_hudlit_v1_12B_500K_250d_100q.tar      - эмбеддинги Navec
+├── README.md
+└── final_model/
+    ├── slovnet_ner_pii_ru_hard_no_pd.tar
+    └── navec_news_v1_1B_250K_300d_100q.tar
 ```
 
 ## Финальная модель
@@ -17,7 +17,7 @@ models/
 **1. Дообученный Slovnet NER** - обрабатывает контекстно-зависимые классы PERSON и ADDRESS.
 
 - Базовая модель: [Slovnet](https://github.com/natasha/slovnet) от Natasha
-- Эмбеддинги: [Navec](https://github.com/natasha/navec) (`navec_hudlit_v1_12B_500K_250d_100q`)
+- Эмбеддинги: [Navec](https://github.com/natasha/navec) (`navec_news_v1_1B_250K_300d_100q`)
 
 
 **2. Rule-based детекторы** - обрабатывают форматные классы PHONE, EMAIL, ID.
@@ -31,9 +31,15 @@ python scripts/download_assets.py
 ```
 
 Скрипт загружает:
-- `slovnet_ner.bin` - дообученные веса (из релизов репозитория)
-- `navec_hudlit_v1_12B_500K_250d_100q.tar` - эмбеддинги Navec (~1.5 GB)
 
-Веса модели не входят в репозиторий Git (добавлены в `.gitignore`). Каталог `final_model/` содержит `.gitkeep`.
+- `slovnet_ner_pii_ru_hard_no_pd.tar` — дообученные веса Slovnet NER из GitHub Releases;
+- `navec_news_v1_1B_250K_300d_100q.tar` — эмбеддинги Navec.
 
+Файлы автоматически сохраняются в:
+
+```text
+models/final_model/
+```
+
+Веса модели не входят в Git-репозиторий (добавлены в `.gitignore`). В репозитории хранится только структура каталогов (`.gitkeep`).
 
