@@ -1,36 +1,48 @@
-# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
 
-# Virtual env
+.venv/
 venv/
+env/
+ENV/
+
 .env
+.env.*
+!.env.example
 
-.venv_test/
-
-# MacOS
-.DS_Store
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Models
-models/final_model/
-models/final_model/*.tar
-models/final_model/*.safetensors
-models/archive/
-
-# Outputs
-outputs/
-outputs_clean/
-outputs_batch/
-outputs_batch_rich/
-
-# Logs
 *.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
 
-# IDE
-.vscode/
 .idea/
+.vscode/
+*.iml
+
+.ipynb_checkpoints/
+*.nbconvert/
+
+models/final_model/*.bin
+models/final_model/*.pt
+models/final_model/*.npz
+models/final_model/navec_*.tar
+
+outputs/
+*.anonymized.txt
+*.report.json
+
+data/raw/
+data/interim/
+
+*.csv.bak

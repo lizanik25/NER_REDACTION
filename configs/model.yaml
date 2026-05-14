@@ -1,0 +1,41 @@
+model:
+  name: slovnet_ner_finetuned
+  base: slovnet
+  language: ru
+  task: token_classification
+
+  paths:
+    weights: models/final_model/slovnet_ner.bin
+    navec: models/final_model/navec_hudlit_v1_12B_500K_250d_100q.tar
+
+  inference:
+    batch_size: 1
+    chunk_size: 1500
+    chunk_overlap: 200
+    threshold: 0.0
+
+  ml_classes:
+    - PERSON
+    - ADDRESS
+
+  rule_based_classes:
+    - PHONE
+    - EMAIL
+    - ID
+
+baseline:
+  name: natasha_slovnet_pretrained
+  library: natasha
+  classes:
+    - PERSON
+  note: >
+    Предобученная модель Natasha/Slovnet NER. Поддерживает только класс PER
+    (в проекте маппится на PERSON). Классы PHONE, EMAIL, ADDRESS, ID не предсказываются.
+
+  training:
+    epochs: 15
+    optimizer: adam
+    base_model_source: https://github.com/natasha/slovnet
+    navec_source: https://github.com/natasha/navec
+    training_data: data/processed/train_sample.csv
+    eval_data: data/processed/test_sample.csv

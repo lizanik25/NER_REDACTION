@@ -1,0 +1,152 @@
+# NER Redaction — Инструмент для автоматического распознавания и анонимизации персональных данных в русскоязычных текстах
+
+
+Инструмент для автоматического обнаружения и обезличивания персональных данных в русскоязычных текстах. Реализует гибридный подход: правила на основе библиотеки Yargy и регулярных выражений для форматных типов сущностей и дообученная нейросетевая модель Slovnet для контекстно-зависимых типов.
+
+
+## Поддерживаемые типы сущностей
+
+| Класс | Описание | Метод |
+|---|---|---|
+| `PERSON` | ФИО, фамилии, имена, инициалы | Slovnet (дообученный) |
+| `PHONE` | Телефонные номера (все форматы) | Yargy + regex |
+| `EMAIL` | Адреса электронной почты | regex |
+| `ADDRESS` | Почтовые и фактические адреса | Slovnet (дообученный) |
+| `ID` | ИНН, СНИЛС, номера документов и договоров | Yargy + regex |
+
+## Быстрый старт
+
+### Docker 
+
+```bash
+git clone https://github.com/lizanik25/NER_REDACTION.git
+cd NER_REDACTION
+# Поместите веса модели в models/final_model/
+docker-compose up --build
+```
+
+Сервис будет доступен на `http://localhost:8080`.
+
+### Локальная установка
+
+```bash
+pip install -r requirements.txt
+python scripts/download_assets.py
+```
+
+## Интерфейсы
+
+### CLI
+
+```bash
+# Анонимизация текста
+python -m src.ner_redaction.cli text "..." --mode replace
+
+# Анонимизация файла
+python -m src.ner_redaction.cli file input.txt --mode replace --output-dir outputs/ 
+```
+
+Режимы анонимизации (`--mode`):
+- `replace` — замена на метку класса: `[PERSON]`, `[PHONE]` и т.д.
+- `mask` — маскирование символами: `****`
+- `pseudonymize` — замена случайными псевдонимами того же типа
+
+### REST API
+
+После запуска сервиса интерактивная документация Swagger доступна по адресу:
+
+`http://localhost:8080/docs`
+
+
+Примеры использования API:
+
+```bash
+# Анонимизация текста
+curl -X POST http://localhost:8080/anonymize/text \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Петрова Анна, email: anna@mail.ru", "mode": "replace"}'
+
+# Анонимизация файла
+curl -X POST http://localhost:8080/anonymize/file \
+  -F "file=@document.txt" \
+  -F "mode=replace"
+
+# Анонимизация архива
+curl -X POST http://localhost:8080/anonymize/archive \
+  -F "file=@documents.zip" \
+  -F "mode=replace" \
+  --output anonymized_archive.zip
+```
+
+### Веб-интерфейс
+
+Помимо REST API сервис предоставляет веб-интерфейс для интерактивной работы.
+
+В веб-интерфейсе доступны:
+
+- ввод и анонимизация текста;
+- загрузка отдельных файлов;
+- загрузка архивов с пакетной обработкой;
+- выбор режима анонимизации и сущностей для анонимизации;
+- просмотр результата обработки.
+
+### Запуск веб-интерфейса
+
+
+Убедитесь, что REST API сервис запущен и доступен на `http://localhost:8080`.
+
+Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+После запуска доступен Web UI: `http://localhost:8080/ui`
+
+## Архитектура
+
+```
+Входные данные (текст / .txt / ZIP)
+        │
+        ▼
+   RedactionPipeline
+   ├── chunking (блоки по 1500 символов, перекрытие 200)
+   │
+   ├── HybridPIIExtractor
+   │   ├── RuleBasedPIIExtractor  →  PHONE, EMAIL, ID
+   │   └── SlovnetPIIExtractor    →  PERSON, ADDRESS
+   │
+   ├── разрешение пересечений
+   ├── фильтрация allowlist / denylist
+   │
+   └── TextAnonymizer (replace / mask / pseudonymize)
+        │
+        ▼
+   Анонимизированный текст + отчёт о найденных сущностях 
+```
+
+## Структура репозитория
+
+```
+ner-redaction/
+├── configs/          # Конфигурации сущностей и модели
+├── app/              # FastAPI приложение (REST API + веб-интерфейс)
+├── src/ner_redaction/ # Основной пакет: pipeline, детекторы, анонимизатор
+├── scripts/          # Скрипты подготовки данных, правил, обучения
+├── notebooks/        # Jupyter-ноутбуки с экспериментами
+├── data/             # Выборки данных и документация корпуса
+└── models/           # Веса финальной модели
+```
+
+## Данные
+
+Корпус (~1900 текстов, ~4000 размеченных сущностей) сформирован из открытых источников (Nerus, NEREL, FactRuEval-2016, WiNER, Wikipedia, Mokoron Russian Twitter) и синтетически сгенерированных примеров. Подробнее - в [`data/README.md`](data/README.md).
+
+## Ноутбуки с экспериментами
+
+Все этапы с проведенными экспериментами содержатся в Jupyter-ноутбуках в [`notebooks/`](notebooks/README.md): от сбора данных до дообучения модели и оценки гибридного подхода.
+
+
+## Лицензия
+
+MIT — см. [LICENSE](LICENSE).

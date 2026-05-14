@@ -1,0 +1,33 @@
+entities:
+  PERSON:
+    description: "Антропонимы: полное ФИО, фамилия + имя, инициалы, имя с должностью"
+    method: ml
+
+    enabled: true
+
+  PHONE:
+    description: "Телефонные номера во всех форматах записи"
+    method: rule_based
+    enabled: true
+
+  EMAIL:
+    description: "Адреса электронной почты"
+    method: rule_based
+    enabled: true
+
+  ADDRESS:
+    description: "Почтовые и фактические адреса (с маркерами: ул., д., кв., г. и др.)"
+    method: ml
+    enabled: true
+
+  ID:
+    description: "Числовые и буквенно-цифровые идентификаторы: ИНН, СНИЛС, номера документов и договоров"
+    method: rule_based
+    enabled: true
+
+default_enabled:
+  - PERSON
+  - PHONE
+  - EMAIL
+  - ADDRESS
+  - ID
