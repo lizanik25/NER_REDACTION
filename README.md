@@ -124,18 +124,6 @@ curl -X POST http://localhost:8080/anonymize/archive \
 - выбор режима анонимизации и сущностей для анонимизации;
 - просмотр результата обработки.
 
-### Запуск веб-интерфейса
-
-
-Убедитесь, что REST API сервис запущен и доступен на `http://localhost:8080`.
-
-Docker Compose:
-
-```bash
-docker compose up --build
-```
-
-После запуска доступен Web UI: `http://localhost:8080/ui`
 
 ## Архитектура
 
