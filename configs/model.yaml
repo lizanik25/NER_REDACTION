@@ -5,8 +5,8 @@ model:
   task: token_classification
 
   paths:
-    weights: models/final_model/slovnet_ner.bin
-    navec: models/final_model/navec_hudlit_v1_12B_500K_250d_100q.tar
+    weights: models/final_model/slovnet_ner_pii_ru_hard_no_pd.tar
+    navec: models/final_model/navec_news_v1_1B_250K_300d_100q.tar
 
   inference:
     batch_size: 1
