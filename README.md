@@ -109,7 +109,6 @@ curl -X POST http://localhost:8080/deidentify-file \
 curl -X POST http://localhost:8080/deidentify-archive \
   -F "file=@documents.zip" \
   -F "mode=replace" \
-  --output anonymized_archive.zip
 ```
 
 ### Веб-интерфейс
