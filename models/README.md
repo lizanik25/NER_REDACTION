@@ -32,8 +32,8 @@ python scripts/download_assets.py
 
 Скрипт загружает:
 
-- `slovnet_ner_pii_ru_hard_no_pd.tar` — дообученные веса Slovnet NER из GitHub Releases;
-- `navec_news_v1_1B_250K_300d_100q.tar` — эмбеддинги Navec.
+- `slovnet_ner_pii_ru_hard_no_pd.tar` - дообученные веса Slovnet NER из GitHub Releases;
+- `navec_news_v1_1B_250K_300d_100q.tar` - эмбеддинги Navec.
 
 Файлы автоматически сохраняются в:
 
