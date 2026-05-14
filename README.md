@@ -16,23 +16,69 @@
 
 ## Быстрый старт
 
-### Docker 
+### Требования
+
+- Python >= 3.10
+- Docker + Docker Compose (для запуска контейнера)
+- Git
+
+### Клонирование репозитория
 
 ```bash
 git clone https://github.com/lizanik25/NER_REDACTION.git
 cd NER_REDACTION
-# Поместите веса модели в models/final_model/
-docker-compose up --build
 ```
 
-Сервис будет доступен на `http://localhost:8080`.
+### Загрузка файлов модели
 
-### Локальная установка
+Файлы модели не хранятся в репозитории GitHub и автоматически скачиваются из GitHub Releases и внешних источников.
+
+Перед запуском необходимо скачать веса:
+
+```bash
+python scripts/download_assets.py
+```
+
+После выполнения в директории `models/final_model/` должны появиться:
+
+```text
+models/final_model/
+├── navec_news_v1_1B_250K_300d_100q.tar
+└── slovnet_ner_pii_ru_hard_no_pd.tar
+```
+
+### Запуск через Docker
+
+```bash
+docker compose up --build
+```
+
+После запуска сервис будет доступен:
+
+- REST API: `http://localhost:8080`
+- Swagger UI: `http://localhost:8080/docs`
+- Web UI: `http://localhost:8080/ui`
+
+### Локальный запуск (без Docker)
+
+Установка зависимостей:
 
 ```bash
 pip install -r requirements.txt
 python scripts/download_assets.py
 ```
+
+Запуск сервиса:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8080
+```
+
+После запуска сервис будет доступен:
+
+- REST API: `http://localhost:8080`
+- Swagger UI: `http://localhost:8080/docs`
+- Web UI: `http://localhost:8080/ui`
 
 ## Интерфейсы
 
