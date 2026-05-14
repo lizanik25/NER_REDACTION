@@ -47,9 +47,9 @@ python -m src.ner_redaction.cli file input.txt --mode replace --output-dir outpu
 ```
 
 Режимы анонимизации (`--mode`):
-- `replace` — замена на метку класса: `[PERSON]`, `[PHONE]` и т.д.
-- `mask` — маскирование символами: `****`
-- `pseudonymize` — замена случайными псевдонимами того же типа
+- `replace` - замена на метку класса: `[PERSON]`, `[PHONE]` и т.д.
+- `mask` - маскирование символами: `****`
+- `pseudonymize` - замена случайными псевдонимами того же типа
 
 ### REST API
 
