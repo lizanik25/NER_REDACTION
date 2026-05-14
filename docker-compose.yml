@@ -1,7 +1,6 @@
 services:
   ner-redaction-api:
     build: .
-    container_name: ner-redaction-api
     ports:
       - "8080:8000"
     volumes:
