@@ -157,14 +157,14 @@ curl -X POST http://localhost:8080/deidentify-archive \
 ## Структура репозитория
 
 ```
-ner-redaction/
+project_root/
 ├── configs/          # Конфигурации сущностей и модели
 ├── app/              # FastAPI приложение (REST API + веб-интерфейс)
 ├── src/ner_redaction/ # Основной пакет: pipeline, детекторы, анонимизатор
 ├── scripts/          # Скрипты подготовки данных, правил, обучения
 ├── notebooks/        # Jupyter-ноутбуки с экспериментами
 ├── data/             # Выборки данных и документация корпуса
-└── models/           # Веса финальной модели
+└── models/           # Веса модели
 ```
 
 ## Данные
