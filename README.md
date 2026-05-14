@@ -82,11 +82,10 @@ python -m src.ner_redaction.cli file input.txt \
   --output-dir outputs/
 
 Результат:
-```text
 outputs/input.anonymized.txt   - анонимизированный текст
 outputs/input.report.json      - отчёт с найденными сущностями
 ```
-```
+
 
 
 Режимы анонимизации (`--mode`):
