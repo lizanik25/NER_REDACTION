@@ -96,7 +96,7 @@ python -m src.ner_redaction.cli file input.txt --mode replace --output-dir outpu
 
 ```bash
 # Анонимизация текста
-curl -X POST http://localhost:8080/anonymize/text \
+curl -X POST http://localhost:8080/deidentify-text \
   -H "Content-Type: application/json" \
   -d '{"text": "Петрова Анна, email: anna@mail.ru", "mode": "replace"}'
 
