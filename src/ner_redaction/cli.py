@@ -211,9 +211,7 @@ def text(
         help="Вывести полный JSON-отчёт вместо красивого табличного вывода.",
     ),
 ):
-    """
-    Анонимизировать один текст из командной строки.
-    """
+
     if mode not in SUPPORTED_MODES:
         raise typer.BadParameter(f"mode должен быть одним из: {sorted(SUPPORTED_MODES)}")
 
@@ -278,9 +276,7 @@ def file(
         help="Дополнительно вывести полный JSON-отчёт в терминал.",
     ),
 ):
-    """
-    Анонимизировать один .txt файл.
-    """
+
     if mode not in SUPPORTED_MODES:
         raise typer.BadParameter(f"mode должен быть одним из: {sorted(SUPPORTED_MODES)}")
 
@@ -362,9 +358,7 @@ def batch(
         help="Искать .txt файлы во вложенных папках.",
     ),
 ):
-    """
-    Пакетно анонимизировать все .txt файлы в папке.
-    """
+
     if mode not in SUPPORTED_MODES:
         raise typer.BadParameter(f"mode должен быть одним из: {sorted(SUPPORTED_MODES)}")
 
