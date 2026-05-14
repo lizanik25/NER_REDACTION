@@ -20,14 +20,7 @@
 
 - Python >= 3.10
 - Docker + Docker Compose (для запуска контейнера)
-- Git
 
-### Клонирование репозитория
-
-```bash
-git clone https://github.com/lizanik25/NER_REDACTION.git
-cd NER_REDACTION
-```
 
 ### Загрузка файлов модели
 
@@ -74,11 +67,6 @@ python scripts/download_assets.py
 uvicorn app.main:app --host 0.0.0.0 --port 8080
 ```
 
-После запуска сервис будет доступен:
-
-- REST API: `http://localhost:8080`
-- Swagger UI: `http://localhost:8080/docs`
-- Web UI: `http://localhost:8080/ui`
 
 ## Интерфейсы
 
