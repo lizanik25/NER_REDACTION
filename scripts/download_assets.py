@@ -13,9 +13,9 @@ NAVEC_FILENAME = "navec_news_v1_1B_250K_300d_100q.tar"
 
 SLOVNET_RELEASE_URL = (
     "https://github.com/lizanik25/NER_REDACTION/releases/download/v1.0/"
-    "slovnet_ner.bin"
+    "slovnet_ner_pii_ru_hard_no_pd.tar"
 )
-SLOVNET_FILENAME = "slovnet_ner.bin"
+SLOVNET_FILENAME = "slovnet_ner_pii_ru_hard_no_pd.tar"
 
 
 def download_file(url: str, dest: Path, desc: str = "") -> None:
