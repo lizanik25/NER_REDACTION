@@ -101,12 +101,12 @@ curl -X POST http://localhost:8080/deidentify-text \
   -d '{"text": "Петрова Анна, email: anna@mail.ru", "mode": "replace"}'
 
 # Анонимизация файла
-curl -X POST http://localhost:8080/anonymize/file \
+curl -X POST http://localhost:8080/deidentify-file \
   -F "file=@document.txt" \
   -F "mode=replace"
 
 # Анонимизация архива
-curl -X POST http://localhost:8080/anonymize/archive \
+curl -X POST http://localhost:8080/deidentify-archive \
   -F "file=@documents.zip" \
   -F "mode=replace" \
   --output anonymized_archive.zip
