@@ -217,8 +217,8 @@ def main():
     parser.add_argument("--test", default="data/processed/test_sample.csv")
     parser.add_argument("--no_pii", default="data/processed/no_pii_sample.csv")
     parser.add_argument("--tricky", default="data/processed/tricky_sample.csv")
-    parser.add_argument("--navec", default="models/final_model/navec_hudlit_v1_12B_500K_250d_100q.tar")
-    parser.add_argument("--weights", default="models/final_model/slovnet_ner.bin")
+    parser.add_argument("--navec", default="models/final_model/navec_news_v1_1B_250K_300d_100q.tar")
+    parser.add_argument("--weights", default="models/final_model/slovnet_ner_pii_ru_hard_no_pd.tar")
     parser.add_argument("--output", default="outputs/eval_results/")
     parser.add_argument("--all_splits", action="store_true",
                         help="Оценить на всех трёх выборках")
