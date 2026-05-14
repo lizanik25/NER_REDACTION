@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 NAVEC_URL = (
-    "https://storage.yandexcloud.net/natasha-navec/packs/"
+    "https://github.com/natasha/navec/releases/download/v0.10/"
     "navec_hudlit_v1_12B_500K_250d_100q.tar"
 )
 NAVEC_FILENAME = "navec_hudlit_v1_12B_500K_250d_100q.tar"
