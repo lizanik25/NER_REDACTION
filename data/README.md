@@ -5,14 +5,14 @@
 ```
 data/
 ├── README.md              
-├── annotation_guidelines.md   — правила разметки корпуса
-├── sources_and_licenses.md    — источники данных и их лицензии
-├── hybrid_schema.md           — схема гибридного подхода к распознаванию
+├── annotation_guidelines.md   - правила разметки корпуса
+├── sources_and_licenses.md    - источники данных и их лицензии
+├── hybrid_schema.md           - схема гибридного подхода к распознаванию
 └── processed/
-    ├── train_sample.csv       — обучающая выборка
-    ├── test_sample.csv        — основная тестовая выборка 
-    ├── no_pii_sample.csv      — тексты без ПД 
-    └── tricky_sample.csv      — сложные примеры 
+    ├── train_sample.csv       - обучающая выборка
+    ├── test_sample.csv        - основная тестовая выборка 
+    ├── no_pii_sample.csv      - тексты без ПД 
+    └── tricky_sample.csv      - сложные примеры 
 ```
 
 ## Состав корпуса
